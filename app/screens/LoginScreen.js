@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { ImageBackground, StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import {AppForm, AppFormField, ErrorMessage, SubmitButton} from '../components/forms';

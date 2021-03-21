@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
 
 function RegisterScreen(props){
   const handleSubmit= async({username, phoneNumber, email, password}) => {
-
+      console.log(username, phoneNumber, email, password)
   }
 
   return(
