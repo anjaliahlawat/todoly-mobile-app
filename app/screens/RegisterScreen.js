@@ -3,6 +3,9 @@ import {StyleSheet, ImageBackground} from 'react-native';
 import * as Yup from 'yup';
 
 import {AppForm, AppFormField, ErrorMessage, SubmitButton} from '../components/forms';
+import authApi from "../api/auth"
+import users from "../api/users"
+import useAuth from "../auth/useAuth"
 import Screen from '../components/Screen';
 
 const validationSchema = Yup.object().shape({
@@ -12,9 +15,25 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label('Password')
 })
 
-function RegisterScreen(props){
-  const handleSubmit= async({username, phoneNumber, email, password}) => {
-      console.log(username, phoneNumber, email, password)
+function RegisterScreen(){
+  const registerApi = useApi(users.register)
+  const loginApi = useApi(authApi.login)
+  const auth = useAuth()
+  const [error, setError] = useState()
+
+  const handleSubmit= async(userInfo) => {
+    const result = await registerApi.request(userInfo)
+
+    if(!result.ok){
+      if(result.data) setError(result.data.error)
+      else{
+        setError("An unexpected error occurred.")
+        console.log(result)
+      }
+      return
+    }
+    const {data: authToken} = await loginApi.request(userInfo.email, userInfo.password)
+    auth.login(authToken)
   }
 
   return(
