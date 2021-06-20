@@ -1,5 +1,5 @@
-import client './client'
+import client from "./client";
 
-const register = (userInfo) => client.post("/users", userInfo)
+const register = (userInfo) => client.post("/users", userInfo);
 
-export default { register }
+export default register;

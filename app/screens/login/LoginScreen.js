@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground } from "react-native";
 import * as Yup from "yup";
 
 import {
@@ -7,27 +7,30 @@ import {
   AppFormField,
   ErrorMessage,
   SubmitButton,
-} from "../components/forms";
-import authApi from "../api/auth";
-import Screen from "../components/Screen";
-import useAuth from "../auth/useAuth";
+} from "../../components/forms";
+import authApi from "../../api/auth";
+import background from "../../assets/background.jpg";
+import Screen from "../../components/screen/Screen";
+import styles from "./styles";
+import useAuth from "../../auth/useAuth";
+import useApi from "../../hooks/useApi";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
-function LoginScreen(props) {
+function LoginScreen() {
   const loginApi = useApi(authApi.login);
   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = async ({ email, password }) => {
     const result = await loginApi.request(email, password);
-
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
     auth.login(result.data);
+    return result.data;
   };
 
   return (
@@ -35,7 +38,7 @@ function LoginScreen(props) {
       <ImageBackground
         blurRadius={1}
         style={styles.background}
-        source={require("../assets/background.jpg")}
+        source={background}
       >
         <AppForm
           initialValues={{ email: "", password: "" }}
@@ -71,18 +74,5 @@ function LoginScreen(props) {
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-  },
-  logo: {
-    width: 80,
-    height: 80,
-    alignSelf: "center",
-    marginTop: 50,
-    marginBottom: 20,
-  },
-});
 
 export default LoginScreen;

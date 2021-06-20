@@ -1,7 +1,8 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import { useFormikContext } from "formik";
 
-import AppTextInput from "../AppTextInput";
+import AppTextInput from "../AppTextInput/AppTextInput";
 import ErrorMessage from "./ErrorMessage";
 
 function AppFormField({ name, width, ...otherProps }) {
@@ -25,5 +26,10 @@ function AppFormField({ name, width, ...otherProps }) {
     </>
   );
 }
+
+AppFormField.propTypes = {
+  name: PropTypes.string,
+  width: PropTypes.string,
+};
 
 export default AppFormField;

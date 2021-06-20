@@ -12,11 +12,13 @@ const storeToken = async (authToken) => {
 };
 
 const getToken = async () => {
+  let token = "";
   try {
-    return await SecureStore.getItemAsync(key);
+    token = await SecureStore.getItemAsync(key);
   } catch (error) {
     console.log(error);
   }
+  return token;
 };
 
 const getUser = async () => {
@@ -32,4 +34,4 @@ const removeToken = async () => {
   }
 };
 
-export default { getUser, removeToken, storeToken };
+export { getUser, removeToken, storeToken };

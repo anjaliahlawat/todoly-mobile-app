@@ -20,11 +20,11 @@ module.exports = {
   },
   plugins: ["react", "prettier"],
   rules: {
-    "prettier/prettier": ERROR,
     "max-len": [WARNING, { code: 100 }],
     "no-console": WARNING,
     "no-await-in-loop": OFF,
     "class-methods-use-this": OFF,
     "no-unused-vars": WARNING,
+    "prettier/prettier": ERROR,
   },
 };
