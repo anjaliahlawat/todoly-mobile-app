@@ -1,5 +1,4 @@
-import React from "react";
-import { PropTypes } from "prop-types";
+import React, { ReactElement } from "react";
 import { TextInput, View } from "react-native";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -7,7 +6,18 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./styles";
 import defaultStyles from "../../config/styles";
 
-function AppTextInput({ icon, width = "100%", ...otherProps }) {
+type AppTextInputProps = {
+  icon?: any;
+  onChangeText: (text: string) => void;
+  onBlur:() => void;
+  value: string;
+  width?: string;
+};
+
+function AppTextInput({
+  icon,
+  width = "100%",
+}: AppTextInputProps): ReactElement {
   return (
     <View style={[styles.container, { width }]}>
       {icon && (
@@ -25,10 +35,5 @@ function AppTextInput({ icon, width = "100%", ...otherProps }) {
     </View>
   );
 }
-
-AppTextInput.propTypes = {
-  icon: PropTypes.string,
-  width: PropTypes.string,
-};
 
 export default AppTextInput;

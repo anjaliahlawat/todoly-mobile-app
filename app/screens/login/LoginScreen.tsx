@@ -8,8 +8,7 @@ import {
   ErrorMessage,
   SubmitButton,
 } from "../../components/forms";
-import authApi from "../../api/auth";
-import background from "../../assets/background.jpg";
+import login from "../../api/auth";
 import Screen from "../../components/screen/Screen";
 import styles from "./styles";
 import useAuth from "../../auth/useAuth";
@@ -21,11 +20,17 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginScreen() {
-  const loginApi = useApi(authApi.login);
+  const loginApi = useApi(login);
   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
 
-  const handleSubmit = async ({ email, password }) => {
+  const handleSubmit = async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
     const result = await loginApi.request(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
@@ -38,7 +43,7 @@ function LoginScreen() {
       <ImageBackground
         blurRadius={1}
         style={styles.background}
-        source={background}
+        source={require("../../assets/background.jpg")}
       >
         <AppForm
           initialValues={{ email: "", password: "" }}

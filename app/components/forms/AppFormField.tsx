@@ -1,23 +1,37 @@
-import React from "react";
-import { PropTypes } from "prop-types";
+import React, { ReactElement } from "react";
 import { useFormikContext } from "formik";
 
 import AppTextInput from "../AppTextInput/AppTextInput";
 import ErrorMessage from "./ErrorMessage";
 
-function AppFormField({ name, width, ...otherProps }) {
+type AppFormFieldProps = {
+  name: string;
+  width?: string;
+  autoCapitalize?: string;
+  autoCorrect?: boolean;
+  icon?: any;
+  keyboardType?: string;
+  placeholder?: string;
+  secureTextEntry?: boolean;
+};
+
+function AppFormField({
+  name,
+  width,
+  ...otherProps
+}: AppFormFieldProps): ReactElement {
   const {
     setFieldTouched,
     setFieldValue,
     errors,
     touched,
     values,
-  } = useFormikContext();
+  } = useFormikContext<any>();
   return (
     <>
       <AppTextInput
         onBlur={() => setFieldTouched(name)}
-        onChangeText={(text) => setFieldValue(name, text)}
+        onChangeText={(text: string) => setFieldValue(name, text)}
         value={values[name]}
         width={width}
         {...otherProps}
@@ -26,10 +40,5 @@ function AppFormField({ name, width, ...otherProps }) {
     </>
   );
 }
-
-AppFormField.propTypes = {
-  name: PropTypes.string,
-  width: PropTypes.string,
-};
 
 export default AppFormField;

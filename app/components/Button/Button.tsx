@@ -1,11 +1,16 @@
-import React from "react";
-import { PropTypes } from "prop-types";
+import React, { ReactElement } from "react";
 import { Text, TouchableOpacity } from "react-native";
 
 import colors from "../../config/colors";
 import styles from "./styles";
 
-function AppButton({ title, onPress, color = "primary" }) {
+type ButtonProps = {
+  title?: string;
+  color?: keyof typeof colors;
+  onPress: () => void;
+}
+
+function AppButton({ title, onPress, color = "primary" }: ButtonProps): ReactElement {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: colors[color] }]}
@@ -15,11 +20,5 @@ function AppButton({ title, onPress, color = "primary" }) {
     </TouchableOpacity>
   );
 }
-
-AppButton.propTypes = {
-  title: PropTypes.string,
-  color: PropTypes.string,
-  onPress: PropTypes.function,
-};
 
 export default AppButton;

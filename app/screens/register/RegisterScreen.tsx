@@ -8,11 +8,10 @@ import {
   ErrorMessage,
   SubmitButton,
 } from "../../components/forms";
-import authApi from "../../api/auth";
-import background from "../../assets/background.jpg";
+import login from "../../api/auth";
 import Screen from "../../components/screen/Screen";
 import styles from "./styles";
-import users from "../../api/users";
+import register from "../../api/users";
 import useAuth from "../../auth/useAuth";
 import useApi from "../../hooks/useApi";
 
@@ -23,13 +22,20 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-function RegisterScreen() {
-  const registerApi = useApi(users.register);
-  const loginApi = useApi(authApi.login);
-  const auth = useAuth();
-  const [error, setError] = useState();
+type UserInfoProps = {
+  username: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+}
 
-  const handleSubmit = async (userInfo) => {
+function RegisterScreen() {
+  const registerApi = useApi(register);
+  const loginApi = useApi(login);
+  const auth = useAuth();
+  const [error, setError] = useState<string>();
+
+  const handleSubmit = async (userInfo: UserInfoProps) => {
     const result = await registerApi.request(userInfo);
     if (!result.ok) {
       if (result.data) setError(result.data.error);
@@ -51,7 +57,7 @@ function RegisterScreen() {
       <ImageBackground
         blurRadius={1}
         style={styles.background}
-        source={background}
+        source={require("../../assets/background.jpg")}
       >
         <AppForm
           initialValues={{

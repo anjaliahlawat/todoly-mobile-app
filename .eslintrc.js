@@ -4,21 +4,22 @@ const ERROR = 2;
 
 module.exports = {
   extends: [
-    "plugin:react/recommended",
     "airbnb-base",
+    "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
   env: {
     browser: true,
-    es2021: true,
   },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      tsx: true,
     },
     ecmaVersion: 12,
   },
-  plugins: ["react", "prettier"],
+  plugins: ["react", "prettier", "@typescript-eslint", "react-native"],
   rules: {
     "max-len": [WARNING, { code: 100 }],
     "no-console": WARNING,

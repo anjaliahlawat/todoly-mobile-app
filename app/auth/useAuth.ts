@@ -5,9 +5,9 @@ import AuthContext from "./context";
 import { storeToken, removeToken } from "./storage";
 
 const useAuth = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext) as ContextType;
 
-  const login = (authToken) => {
+  const login = (authToken: string) => {
     setUser(jwtDecode(authToken));
     storeToken(authToken);
   };
