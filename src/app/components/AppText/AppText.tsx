@@ -4,11 +4,15 @@ import { StyleProp, Text, TextStyle } from "react-native";
 import defaultStyles from "../../config/styles";
 
 type AppTextProps = {
-  children: string,
-  style: StyleProp<TextStyle>,
-}
+  children: JSX.Element;
+  style: StyleProp<TextStyle>;
+};
 
-function AppText({ children, style, ...otherProps }: AppTextProps): ReactElement {
+function AppText({
+  children,
+  style,
+  ...otherProps
+}: AppTextProps): ReactElement {
   return (
     <Text style={[defaultStyles.text, style]} {...otherProps}>
       {children}

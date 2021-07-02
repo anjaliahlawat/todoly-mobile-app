@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { ImageBackground } from "react-native";
 import * as Yup from "yup";
 
@@ -15,6 +15,8 @@ import register from "../../api/users";
 import useAuth from "../../auth/useAuth";
 import useApi from "../../hooks/useApi";
 
+const background = require("../../assets/background.jpg");
+
 const validationSchema = Yup.object().shape({
   username: Yup.string().required().label("Username"),
   phoneNumber: Yup.string().required().min(10).label("Phone Number"),
@@ -27,9 +29,9 @@ type UserInfoProps = {
   phoneNumber: string;
   email: string;
   password: string;
-}
+};
 
-function RegisterScreen() {
+function RegisterScreen(): ReactElement {
   const registerApi = useApi(register);
   const loginApi = useApi(login);
   const auth = useAuth();
@@ -41,7 +43,6 @@ function RegisterScreen() {
       if (result.data) setError(result.data.error);
       else {
         setError("An unexpected error occurred.");
-        console.log(result);
       }
       return;
     }
@@ -57,7 +58,7 @@ function RegisterScreen() {
       <ImageBackground
         blurRadius={1}
         style={styles.background}
-        source={require("../../assets/background.jpg")}
+        source={background}
       >
         <AppForm
           initialValues={{
@@ -69,6 +70,7 @@ function RegisterScreen() {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
+          <ErrorMessage error={error} visible={error} />
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}

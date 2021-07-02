@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { ImageBackground } from "react-native";
 import * as Yup from "yup";
 
@@ -14,12 +14,14 @@ import styles from "./styles";
 import useAuth from "../../auth/useAuth";
 import useApi from "../../hooks/useApi";
 
+const background = require("../../assets/background.jpg");
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
-function LoginScreen() {
+function LoginScreen(): ReactElement {
   const loginApi = useApi(login);
   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
@@ -43,7 +45,7 @@ function LoginScreen() {
       <ImageBackground
         blurRadius={1}
         style={styles.background}
-        source={require("../../assets/background.jpg")}
+        source={background}
       >
         <AppForm
           initialValues={{ email: "", password: "" }}

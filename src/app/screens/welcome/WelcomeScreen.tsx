@@ -4,12 +4,14 @@ import { ImageBackground, View, Text } from "react-native";
 import AppButton from "../../components/Button/Button";
 import styles from "./styles";
 
+const background = require("../../assets/background.jpg");
+
 function WelcomeScreen(): ReactElement {
   return (
     <ImageBackground
       blurRadius={1}
       style={styles.background}
-      source={require("../../assets/background.jpg")}
+      source={background}
     >
       <View style={styles.logoContainer}>
         <Text style={styles.tagline}>Declutter your mind</Text>

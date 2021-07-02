@@ -8,8 +8,8 @@ import defaultStyles from "../../config/styles";
 
 type AppTextInputProps = {
   icon?: any;
-  onChangeText: (text: string) => void;
-  onBlur:() => void;
+  onChangeText: React.FormEventHandler<HTMLInputElement>;
+  onBlur: () => void;
   value: string;
   width?: string;
 };
