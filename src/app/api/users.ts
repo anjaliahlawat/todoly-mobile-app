@@ -1,5 +1,14 @@
+import { ApiResponse } from "apisauce";
 import client from "./client";
 
-const register = (userInfo) => client.post("/users", userInfo);
+type UserInfo = {
+  username: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+};
+
+const register = (userInfo: UserInfo): Promise<ApiResponse<unknown, unknown>> =>
+  client.post("/users", userInfo);
 
 export default register;

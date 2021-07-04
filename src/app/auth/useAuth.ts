@@ -4,7 +4,13 @@ import jwtDecode from "jwt-decode";
 import AuthContext from "./context";
 import { storeToken, removeToken } from "./storage";
 
-const useAuth = () => {
+type UseAuthReturnType = {
+  user: string | null;
+  login: (authToken: string) => void;
+  logout: () => void;
+};
+
+const useAuth = (): UseAuthReturnType => {
   const { user, setUser } = useContext(AuthContext) as ContextType;
 
   const login = (authToken: string) => {

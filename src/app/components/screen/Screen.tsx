@@ -1,20 +1,19 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import { SafeAreaView, View } from "react-native";
+import React, { ReactElement } from "react";
+import { SafeAreaView, StyleProp, View, ViewStyle } from "react-native";
 
 import styles from "./styles";
 
-function Screen({ children, style }) {
+type ScreenProps = {
+  children: JSX.Element;
+  style?: StyleProp<ViewStyle>;
+};
+
+function Screen({ children, style }: ScreenProps): ReactElement {
   return (
     <SafeAreaView style={[styles.screen, style]}>
       <View style={[styles.view, style]}>{children}</View>
     </SafeAreaView>
   );
 }
-
-Screen.propTypes = {
-  children: PropTypes.object,
-  style: PropTypes.object,
-};
 
 export default Screen;

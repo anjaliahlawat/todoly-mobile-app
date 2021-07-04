@@ -7,10 +7,14 @@ import styles from "./styles";
 type ButtonProps = {
   title?: string;
   color?: keyof typeof colors;
-  onPress: () => void;
-}
+  onPress: React.FormEventHandler<HTMLInputElement>;
+};
 
-function AppButton({ title, onPress, color = "primary" }: ButtonProps): ReactElement {
+function AppButton({
+  title,
+  onPress,
+  color = "primary",
+}: ButtonProps): ReactElement {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: colors[color] }]}

@@ -1,15 +1,20 @@
-import { create } from "apisauce";
-import authStorage from "../auth/storage";
+import { create, ApisauceInstance, ApiResponse } from "apisauce";
+import * as caches from "../utility/cache";
+import { getToken } from "../auth/storage";
 
-const apiClient = create({ baseURL: "http://localhost:3000/api" });
+const apiClient: ApisauceInstance = create({
+  baseURL: "http://localhost:3000/api",
+});
+
 apiClient.addAsyncRequestTransform(async (request) => {
-  const authToken = await authStorage.getToken();
+  const authToken = await getToken();
   if (!authToken) return;
   request.headers["x-auth-token"] = authToken;
 });
 
 const { get } = apiClient;
-apiClient.get = async (url, params, axiosConfig) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+apiClient.get = async (url, params, axiosConfig): Promise<ApiResponse<any>> => {
   const response = await get(url, params, axiosConfig);
 
   if (response.ok) {

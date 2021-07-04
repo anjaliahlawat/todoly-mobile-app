@@ -24,23 +24,16 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-type UserInfoProps = {
-  username: string;
-  phoneNumber: string;
-  email: string;
-  password: string;
-};
-
 function RegisterScreen(): ReactElement {
   const registerApi = useApi(register);
   const loginApi = useApi(login);
   const auth = useAuth();
-  const [error, setError] = useState<string>();
+  const [error, setError] = useState<boolean | string>();
 
-  const handleSubmit = async (userInfo: UserInfoProps) => {
+  const handleSubmit = async (userInfo: RegisterProps) => {
     const result = await registerApi.request(userInfo);
     if (!result.ok) {
-      if (result.data) setError(result.data.error);
+      if (result.data) setError(true);
       else {
         setError("An unexpected error occurred.");
       }
@@ -50,7 +43,7 @@ function RegisterScreen(): ReactElement {
       userInfo.email,
       userInfo.password
     );
-    auth.login(authToken);
+    auth.login(authToken as string);
   };
 
   return (

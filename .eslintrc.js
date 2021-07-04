@@ -7,7 +7,7 @@ module.exports = {
     "airbnb-base",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
   ],
   env: {
     browser: true,
@@ -20,15 +20,13 @@ module.exports = {
     ecmaVersion: 12,
   },
   globals: {
-    require: true
+    require: true,
   },
   plugins: ["react", "prettier", "@typescript-eslint", "react-native"],
   settings: {
-    "import/resolver": {
-      "typescript": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
-    }
+    react: {
+      version: "detect",
+    },
   },
   rules: {
     "max-len": [WARNING, { code: 100 }],
@@ -39,16 +37,18 @@ module.exports = {
     "prettier/prettier": ERROR,
     "no-use-before-define": OFF,
     "@typescript-eslint/no-use-before-define": ERROR,
-    '@typescript-eslint/no-var-requires': OFF,
-    "import/extensions": [
-      ERROR,
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-   ]
+    "@typescript-eslint/no-var-requires": OFF,
+    "import/extensions": OFF,
+    "import/no-unresolved": OFF,
+    // "import/extensions": [
+    //   ERROR,
+    //   "ignorePackages",
+    //   {
+    //     js: "never",
+    //     jsx: "never",
+    //     ts: "never",
+    //     tsx: "never",
+    //   },
+    // ],
   },
 };

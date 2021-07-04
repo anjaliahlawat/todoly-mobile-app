@@ -1,14 +1,21 @@
 import React, { ReactElement } from "react";
-import { Formik, FormikProps } from "formik";
+import { Formik } from "formik";
 
 type AppFormProps = {
-  initialValues: {};
-  onSubmit: ({}: any) => Promise<any>;
-  validationSchema: {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  initialValues: any;
+  onSubmit: (opts: RegisterProps) => Promise<unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  validationSchema: any;
   children: Array<ReactElement>;
-}
+};
 
-function AppForm({ initialValues, onSubmit, validationSchema, children }: AppFormProps): ReactElement {
+function AppForm({
+  initialValues,
+  onSubmit,
+  validationSchema,
+  children,
+}: AppFormProps): ReactElement {
   return (
     <Formik
       initialValues={initialValues}

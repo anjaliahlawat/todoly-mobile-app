@@ -1,6 +1,14 @@
+import { ApiResponse } from "apisauce";
 import { useState } from "react";
 
-const useApi = (apiFunc: any) => {
+type UseApiReturnType = {
+  data: Array<unknown>;
+  error: boolean;
+  loading: boolean;
+  request: (...args: any[]) => Promise<ApiResponse<unknown>>;
+};
+
+const useApi = (apiFunc: any): UseApiReturnType => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);

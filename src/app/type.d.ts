@@ -1,4 +1,11 @@
 type ContextType = {
-  user: string;
+  user: string | null;
   setUser: (user: string | null) => void;
+};
+
+type RegisterProps = {
+  username?: string;
+  phoneNumber?: string;
+  email: string;
+  password: string;
 };

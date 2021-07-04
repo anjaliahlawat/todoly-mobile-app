@@ -20,13 +20,8 @@ function AppFormField({
   width,
   ...otherProps
 }: AppFormFieldProps): ReactElement {
-  const {
-    setFieldTouched,
-    setFieldValue,
-    errors,
-    touched,
-    values,
-  } = useFormikContext<any>();
+  const { setFieldTouched, setFieldValue, errors, touched, values } =
+    useFormikContext<any>();
   return (
     <>
       <AppTextInput

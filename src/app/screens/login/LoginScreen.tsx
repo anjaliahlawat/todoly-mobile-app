@@ -36,7 +36,7 @@ function LoginScreen(): ReactElement {
     const result = await loginApi.request(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
-    auth.login(result.data);
+    auth.login(result.data as string);
     return result.data;
   };
 
