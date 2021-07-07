@@ -14,7 +14,7 @@ import styles from "./styles";
 import useAuth from "../../auth/useAuth";
 import useApi from "../../hooks/useApi";
 
-const background = require("../../assets/background.jpg");
+const background = require("../../../../assets/background.jpg");
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),

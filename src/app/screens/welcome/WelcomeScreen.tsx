@@ -4,7 +4,7 @@ import { ImageBackground, View, Text } from "react-native";
 import AppButton from "../../components/Button/Button";
 import styles from "./styles";
 
-const background = require("../../assets/background.jpg");
+const background = require("../../../../assets/background.jpg");
 
 function WelcomeScreen(): ReactElement {
   return (
