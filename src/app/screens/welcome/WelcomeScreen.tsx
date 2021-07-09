@@ -6,7 +6,7 @@ import styles from "./styles";
 
 const background = require("../../../../assets/background.jpg");
 
-function WelcomeScreen(): ReactElement {
+function WelcomeScreen({ navigation }: { navigation?: any }): ReactElement {
   return (
     <ImageBackground
       blurRadius={1}
@@ -17,10 +17,10 @@ function WelcomeScreen(): ReactElement {
         <Text style={styles.tagline}>Declutter your mind</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <AppButton title="LOGIN" onPress={() => console.log("Login")} />
+        <AppButton title="LOGIN" onPress={() => navigation.navigate("Login")} />
         <AppButton
           title="REGISTER"
-          onPress={() => console.log("Register")}
+          onPress={() => navigation.navigate("Register")}
           color="secondary"
         />
       </View>

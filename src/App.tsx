@@ -1,6 +1,12 @@
 import React, { ReactElement } from "react";
-import WelcomeScreen from "./app/screens/welcome/WelcomeScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
 
 export default function App(): ReactElement {
-  return <WelcomeScreen />;
+  return (
+    <NavigationContainer theme={navigationTheme}>
+      <AuthNavigator />
+    </NavigationContainer>
+  );
 }
