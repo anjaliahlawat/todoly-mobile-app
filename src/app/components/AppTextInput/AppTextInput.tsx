@@ -17,6 +17,9 @@ type AppTextInputProps = {
 function AppTextInput({
   icon,
   width = "100%",
+  onBlur,
+  onChangeText,
+  value,
 }: AppTextInputProps): ReactElement {
   return (
     <View style={[styles.container, { width }]}>
@@ -31,6 +34,9 @@ function AppTextInput({
       <TextInput
         placeholderTextColor={defaultStyles.colors.medium}
         style={defaultStyles.text}
+        onBlur={onBlur}
+        onChangeText={onChangeText}
+        value={value}
       />
     </View>
   );
