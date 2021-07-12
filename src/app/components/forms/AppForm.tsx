@@ -3,7 +3,7 @@ import { Formik } from "formik";
 
 type AppFormProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  initialValues: any;
+  initialValues: RegisterProps;
   onSubmit: (opts: RegisterProps) => Promise<unknown>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   validationSchema: any;

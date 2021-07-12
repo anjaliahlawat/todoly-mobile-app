@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import { ImageBackground } from "react-native";
+import { ImageBackground, View } from "react-native";
 import * as Yup from "yup";
 
 import {
@@ -47,36 +47,42 @@ function LoginScreen(): ReactElement {
         style={styles.background}
         source={background}
       >
-        <AppForm
-          initialValues={{ email: "", password: "" }}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
-          <ErrorMessage
-            error="Invalid email and/or password."
-            visible={loginFailed}
-          />
+        <View style={styles.form}>
+          <AppForm
+            initialValues={{ email: "", password: "" }}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+          >
+            <ErrorMessage
+              error="Invalid email and/or password."
+              visible={loginFailed}
+            />
 
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="email"
-            keyboardType="email-address"
-            name="email"
-            placeholder="Email"
-          />
+            <AppFormField
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="email"
+              keyboardType="email-address"
+              name="email"
+              placeholder="Email"
+              secureTextEntry={false}
+              textContentType="emailAddress"
+            />
 
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="lock"
-            name="password"
-            placeholder="Password"
-            secureTextEntry
-          />
+            <AppFormField
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="lock"
+              keyboardType="password"
+              name="password"
+              placeholder="Password"
+              secureTextEntry
+              textContentType="password"
+            />
 
-          <SubmitButton title="Login" />
-        </AppForm>
+            <SubmitButton title="Login" />
+          </AppForm>
+        </View>
       </ImageBackground>
     </Screen>
   );

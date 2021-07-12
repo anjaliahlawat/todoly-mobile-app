@@ -22,7 +22,7 @@ function CaptureScreen({ navigation }: { navigation?: any }): ReactElement {
         </View>
         <View style={styles.captureInputBox}>
           <AppTextArea
-            onChangeText={(e) => setValue(e.target.value)}
+            onChangeText={(text) => setValue(text)}
             numberOfLines={8}
             value={value}
           />

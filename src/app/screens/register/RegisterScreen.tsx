@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import { ImageBackground } from "react-native";
+import { ImageBackground, View } from "react-native";
 import * as Yup from "yup";
 
 import {
@@ -53,49 +53,52 @@ function RegisterScreen(): ReactElement {
         style={styles.background}
         source={background}
       >
-        <AppForm
-          initialValues={{
-            username: "",
-            phoneNumber: "",
-            email: "",
-            password: "",
-          }}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
-          <ErrorMessage error={error} visible={error} />
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="username"
-            name="username"
-            placeholder="Username"
-          />
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="phoneNo"
-            name="phoneNo"
-            placeholder="Phone No."
-          />
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="email"
-            keyboardType="email-address"
-            name="email"
-            placeholder="Email"
-          />
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="lock"
-            name="password"
-            placeholder="Password"
-            secureTextEntry
-          />
-          <SubmitButton title="Register" />
-        </AppForm>
+        <View style={styles.form}>
+          <AppForm
+            initialValues={{
+              username: "",
+              phoneNumber: "",
+              email: "",
+              password: "",
+            }}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+          >
+            <ErrorMessage error={error} visible={error} />
+            <AppFormField
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="account"
+              name="username"
+              placeholder="Username"
+            />
+            <AppFormField
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="phone"
+              name="phoneNumber"
+              placeholder="Phone No."
+            />
+            <AppFormField
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="email"
+              keyboardType="email-address"
+              name="email"
+              placeholder="Email"
+            />
+            <AppFormField
+              autoCapitalize="none"
+              autoCorrect={false}
+              icon="lock"
+              name="password"
+              placeholder="Password"
+              secureTextEntry
+              textContentType="password"
+            />
+            <SubmitButton title="Register" />
+          </AppForm>
+        </View>
       </ImageBackground>
     </Screen>
   );

@@ -7,9 +7,16 @@ import styles from "./styles";
 import defaultStyles from "../../config/styles";
 
 type AppTextInputProps = {
+  autoCapitalize: string;
+  autoCorrect: boolean;
   icon?: any;
+  keyboardType?: string;
+  name?: string;
   onChangeText: (text: string) => void;
   onBlur: () => void;
+  placeholder?: string;
+  secureTextEntry?: boolean;
+  textContentType?: string;
   value: string;
   width?: string;
 };
@@ -20,6 +27,7 @@ function AppTextInput({
   onBlur,
   onChangeText,
   value,
+  secureTextEntry,
 }: AppTextInputProps): ReactElement {
   return (
     <View style={[styles.container, { width }]}>
@@ -36,6 +44,7 @@ function AppTextInput({
         style={defaultStyles.text}
         onBlur={onBlur}
         onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
         value={value}
       />
     </View>
