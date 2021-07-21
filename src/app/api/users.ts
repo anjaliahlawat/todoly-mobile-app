@@ -9,6 +9,6 @@ type UserInfo = {
 };
 
 const register = (userInfo: UserInfo): Promise<ApiResponse<unknown, unknown>> =>
-  client.post("/users", userInfo);
+  client.post("/register", userInfo);
 
 export default register;

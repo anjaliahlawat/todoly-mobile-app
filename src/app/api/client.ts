@@ -3,7 +3,7 @@ import * as caches from "../utility/cache";
 import { getToken } from "../auth/storage";
 
 const apiClient: ApisauceInstance = create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://todoly-app-service.herokuapp.com/api",
 });
 
 apiClient.addAsyncRequestTransform(async (request) => {
