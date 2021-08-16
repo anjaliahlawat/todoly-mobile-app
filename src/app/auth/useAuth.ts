@@ -5,7 +5,7 @@ import AuthContext from "./context";
 import { storeToken, removeToken } from "./storage";
 
 type UseAuthReturnType = {
-  user: string | null;
+  user: UserObj | null | undefined;
   login: (authToken: string) => void;
   logout: () => void;
 };
