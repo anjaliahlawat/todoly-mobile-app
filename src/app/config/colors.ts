@@ -1,5 +1,6 @@
 export default {
   primary: "#FB7979",
+  primaryLight: "#FFF4F4",
   secondary: "#4ECDC4",
   black: "#000",
   white: "#fff",
@@ -7,4 +8,5 @@ export default {
   light: "#f8f4f4",
   dark: "#0c0c0c",
   danger: "#ff5252",
+  cardText: "#4D4B4B",
 };

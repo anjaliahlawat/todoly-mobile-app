@@ -4,8 +4,8 @@ import { StyleProp, Text, TextStyle } from "react-native";
 import defaultStyles from "../../config/styles";
 
 type AppTextProps = {
-  children: JSX.Element;
-  style: StyleProp<TextStyle>;
+  children: JSX.Element | string;
+  style?: StyleProp<TextStyle>;
 };
 
 function AppText({

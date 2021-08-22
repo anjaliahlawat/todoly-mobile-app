@@ -1,6 +1,10 @@
+type UserObj = {
+  _id: string;
+};
+
 type ContextType = {
-  user: string | null;
-  setUser: (user: string | null) => void;
+  user: UserObj | null | undefined;
+  setUser: (user: UserObj | null) => void;
 };
 
 type RegisterProps = {
@@ -8,4 +12,9 @@ type RegisterProps = {
   phoneNumber?: string;
   email: string;
   password: string;
+};
+
+type Task = {
+  type: string;
+  desc: string;
 };

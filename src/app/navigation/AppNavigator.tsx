@@ -1,8 +1,10 @@
 import React, { ReactElement } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import CaptureScreen from "../screens/capture/CaptureScreen";
-import OrganizeScreen from "../screens/organize/OrganizeScreen";
 import MainScreen from "../screens/main/MainScreen";
+import CapturedListScreen from "../screens/capturedList/CapturedListScreen";
+import CapturedListHeader from "../screens/capturedList/CaptureListHeader";
+import colors from "../config/colors";
 
 const Stack = createStackNavigator();
 
@@ -20,9 +22,22 @@ const AppNavigator = (): ReactElement => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Organize"
-        component={OrganizeScreen}
-        options={{ headerShown: false }}
+        name="CaptureList"
+        component={CapturedListScreen}
+        initialParams={{ count: 0 }}
+        options={({ route }) => ({
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0,
+          },
+          headerTintColor: colors.white,
+          headerShadowVisible: false,
+          // eslint-disable-next-line react/display-name
+          headerTitle: (props) => (
+            <CapturedListHeader {...props} route={route} />
+          ),
+        })}
       />
     </Stack.Navigator>
   );

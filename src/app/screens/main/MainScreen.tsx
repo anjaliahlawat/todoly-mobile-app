@@ -21,7 +21,7 @@ function MainScreen({ navigation }: { navigation?: any }): ReactElement {
           />
           <AppButton
             title="Organize"
-            onPress={() => navigation.navigate("Organize")}
+            onPress={() => navigation.navigate("CaptureList")}
             color="secondary"
           />
         </View>

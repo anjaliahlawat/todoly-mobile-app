@@ -38,17 +38,8 @@ module.exports = {
     "no-use-before-define": OFF,
     "@typescript-eslint/no-use-before-define": ERROR,
     "@typescript-eslint/no-var-requires": OFF,
+    "@typescript-eslint/no-non-null-assertion": OFF,
     "import/extensions": OFF,
     "import/no-unresolved": OFF,
-    // "import/extensions": [
-    //   ERROR,
-    //   "ignorePackages",
-    //   {
-    //     js: "never",
-    //     jsx: "never",
-    //     ts: "never",
-    //     tsx: "never",
-    //   },
-    // ],
   },
 };
